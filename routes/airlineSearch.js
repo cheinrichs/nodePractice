@@ -1,12 +1,12 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const airlineDataProcessor = require("../airlineDataProcessor.js");
-console.log(airlineDataProcessor);
+import airlineDataProcessor from "../airlineDataProcessor.js";
 
 router.get("/:airlineName", (req, res) => {
-  airlineDataProcessor("United");
+  const result = airlineDataProcessor.searchAirline(req.params.airlineName);
+  console.log("result", result);
   res.send(`Searched ${req.params.airlineName}`);
 });
 
-module.exports = exports = router;
+export default router;

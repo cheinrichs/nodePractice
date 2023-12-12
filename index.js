@@ -1,10 +1,11 @@
-const express = require("express");
+import express from "express";
 const app = express();
 
 const host = "localhost";
 const port = 8000;
 
-const airlineSearch = require("./routes/airlineSearch.js");
+import airlineSearch from "./routes/airlineSearch.js";
+import indexRoute from "./routes/index.js";
 
 app.listen(port, () => {
   console.log(`Server is running on http://${host}:${port}`);
@@ -12,6 +13,4 @@ app.listen(port, () => {
 
 app.use("/search", airlineSearch);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Airline Safety Savior!");
-});
+app.use("/", indexRoute);
