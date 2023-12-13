@@ -16,7 +16,7 @@ fs.createReadStream("./airlinedata.csv")
     console.log("error");
   });
 
-const searchAirline = (airlineName) => {
+function searchAirline(airlineName) {
   if (!airlineName) {
     return { found: false, airline: null };
   }
@@ -33,6 +33,6 @@ const searchAirline = (airlineName) => {
     }
   }
   return { found: false, airline: null };
-};
+}
 
-export default { searchAirline };
+export default searchAirline;

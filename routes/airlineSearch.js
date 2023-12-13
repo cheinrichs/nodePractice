@@ -1,12 +1,9 @@
 import express from "express";
+import asyncHandler from "express-async-handler";
 const router = express.Router();
 
-import airlineDataProcessor from "../airlineDataProcessor.js";
+import searchAirline from "../controllers/searchController.js";
 
-router.get("/:airlineName", (req, res) => {
-  const result = airlineDataProcessor.searchAirline(req.params.airlineName);
-  console.log("result", result);
-  res.send(`Searched ${req.params.airlineName}`);
-});
+router.get("/:airlineName", asyncHandler(searchAirline));
 
 export default router;
